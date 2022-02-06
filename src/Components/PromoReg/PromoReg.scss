@@ -1,0 +1,192 @@
+.promoReg {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.1);
+}
+
+.registration {
+  width: 380px;
+  height: 100%;
+  background-color: rgba(134, 211, 244, 1);
+}
+
+.promoReg__controls {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: end;
+}
+
+.promoReg__closeBtn {
+  margin: 20px 20px 0 0;
+  padding: 16px 34px;
+  border: solid 2px black;
+
+  &:hover {
+    background-color: black;
+  }
+
+  &:hover .closeBtn__line {
+    background-color: white;
+  }
+}
+
+.closeBtn__line {
+  width: 28px;
+  height: 2px;
+  background-color: black;
+
+  &.first__line {
+    transform: rotate(45deg) ;
+  }
+
+  &.second__line {
+    transform: rotate(-45deg) translateY(-50%);
+  }
+}
+
+.promoReg__info {
+  margin: 0 40px 40px 0;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+
+.promoReg__info__title {
+  margin-right: 10px;
+  max-width: 194px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  display: flex;
+  align-items: center;
+  text-align: right;
+  text-transform: uppercase;
+  color: #FFFFFF;
+}
+
+.registration {
+  padding: 72px 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.registration__title {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 26px;
+  line-height: 30px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+.registration__telephone {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 32px;
+  line-height: 37px;
+  display: flex;
+  align-items: center;
+  text-transform: uppercase;
+}
+
+.registration__subtitle {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+.registration__check {
+  display: flex;
+}
+
+.check__title {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  color: #565656;
+}
+
+.registration__submitBtn {
+  padding: 12px 19px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  text-transform: uppercase;
+  color: #4E4E4E;
+  background-color: transparent;
+  border: 1px solid #4E4E4E;
+
+  &:hover {
+    background-color: black;
+    color: white;
+  }
+}
+
+.registration__check {
+  max-width: 220px;
+}
+
+input[type="checkbox"]:checked,
+input[type="checkbox"]:not(:checked), {
+    position: absolute;
+    left: -9999px;
+}
+
+input[type="checkbox"]:checked + label,
+input[type="checkbox"]:not(:checked) + label, {
+  display: inline-block;
+  position: relative;
+  padding-left: 60px;
+  line-height: 20px;
+  cursor: pointer;
+}
+
+input[type="checkbox"]:checked + label:before,
+input[type="checkbox"]:not(:checked) + label:before, {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 40px;
+  height: 40px;
+  border: 2px solid black;
+  background-color: transparent;
+}
+
+input[type="checkbox"]:checked + label:after,
+input[type="checkbox"]:not(:checked) + label:after, {
+  content: "";
+  position: absolute;
+  transition: all 0.2s ease;
+  left: 0;
+  top: 0;
+  width: 40px;
+  height: 40px;
+  clip-path: polygon(22% 49%, 16% 61%, 42% 75%, 84% 23%, 66% 16%, 38% 57%);
+  background-color: black;
+}
+
+input[type="checkbox"]:not(:checked) + label:after {
+  opacity: 0;
+}
+
+input[type="checkbox"]:checked + label:after {
+  opacity: 1;
+}
+
