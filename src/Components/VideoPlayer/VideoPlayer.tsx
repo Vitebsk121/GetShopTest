@@ -1,27 +1,25 @@
 import "./VideoPlayer.scss";
 
-import React, {useRef} from "react";
+import React from "react";
 
-const VideoPlayer: React.FC = () => {
+type VideoPlayerProps = {
+  player: React.RefObject<HTMLVideoElement>
+  isStopped: boolean
+  playVideo: () => void
+};
 
-  const player = useRef<HTMLVideoElement>(null)
-
-  const playVideo = () => {
-    player.current!.play();
-  }
-
-  const stopVideo = () => {
-    player.current!.pause();
-  }
+const VideoPlayer: React.FC<VideoPlayerProps> = ({player, isStopped, playVideo}) => {
 
   return (
-    <video
-      ref={player}
-      className="promo__video"
-      src="../../assets/videos/promo.mp4"
-      loop
-      // autoPlay
-    />
+    <>
+      <video
+        ref={player}
+        className="promo__video"
+        src="../../assets/videos/promo.mp4"
+        loop
+      />
+      {isStopped ? <button onClick={playVideo} className="video__playBtn" /> : null}
+    </>
   );
 };
 
