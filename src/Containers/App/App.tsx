@@ -9,7 +9,7 @@ const App: React.FC = () => {
 
   const [cls, setCls] = useState(["promo__banner"]);
   const [isStopped, setIsStopped] = useState(true);
-  const [promoIsVisible, setPromoIsVisible] = useState(false);
+  const [promoIsVisible, setPromoIsVisible] = useState(true);
   const player = useRef<HTMLVideoElement>(null);
 
   const showBanner = () => {
@@ -31,6 +31,7 @@ const App: React.FC = () => {
 
   const stopVideo = () => {
     hideBanner();
+    setIsStopped(true);
     setPromoIsVisible(true);
     player.current!.pause();
   }
@@ -39,7 +40,10 @@ const App: React.FC = () => {
     <div className="app__promo">
       <div className="promo__wrapper">
         <VideoPlayer player={player} isStopped={isStopped} playVideo={playVideo} />
-        <Banner cls={cls} stopVideo={stopVideo} />
+        {isStopped
+          ? null
+          : <Banner cls={cls} stopVideo={stopVideo} />
+        }
         { promoIsVisible
           ? <PromoReg playVideo={playVideo} />
           : null
