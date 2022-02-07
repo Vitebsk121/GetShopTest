@@ -26,6 +26,11 @@
     background-color: black;
     color: white;
   }
+
+  &.picked {
+    background-color: black;
+    color: white;
+  }
 }
 
 .btn1 { grid-area: one; }

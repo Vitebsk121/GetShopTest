@@ -1,0 +1,35 @@
+.promoReg__closeBtn {
+  margin: 20px 20px 0 0;
+  padding: 16px 34px;
+  border: solid 2px black;
+
+  &:hover {
+    background-color: black;
+  }
+
+  &:hover .closeBtn__line {
+    background-color: white;
+  }
+
+  &.picked {
+    background-color: black;
+  }
+
+  &.picked .closeBtn__line {
+    background-color: white;
+  }
+}
+
+.closeBtn__line {
+  width: 28px;
+  height: 2px;
+  background-color: black;
+
+  &.first__line {
+    transform: rotate(45deg) ;
+  }
+
+  &.second__line {
+    transform: rotate(-45deg) translateY(-50%);
+  }
+}

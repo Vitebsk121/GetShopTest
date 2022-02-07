@@ -1,0 +1,79 @@
+.registration__check {
+  display: flex;
+  max-width: 220px;
+
+  &.picked {
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      border: 2px dashed black;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+    }
+  }
+
+}
+
+.check__title {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  color: #565656;
+}
+
+
+
+input[type="checkbox"]:checked,
+input[type="checkbox"]:not(:checked), {
+  position: absolute;
+  left: -9999px;
+}
+
+input[type="checkbox"]:checked + label,
+input[type="checkbox"]:not(:checked) + label, {
+  display: inline-block;
+  position: relative;
+  padding-left: 60px;
+  line-height: 20px;
+  cursor: pointer;
+}
+
+input[type="checkbox"]:checked + label:before,
+input[type="checkbox"]:not(:checked) + label:before, {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 40px;
+  height: 40px;
+  border: 2px solid black;
+  background-color: transparent;
+}
+
+input[type="checkbox"]:checked + label:after,
+input[type="checkbox"]:not(:checked) + label:after, {
+  content: "";
+  position: absolute;
+  transition: all 0.2s ease;
+  left: 0;
+  top: 0;
+  width: 40px;
+  height: 40px;
+  clip-path: polygon(22% 49%, 16% 61%, 42% 75%, 84% 23%, 66% 16%, 38% 57%);
+  background-color: black;
+}
+
+input[type="checkbox"]:not(:checked) + label:after {
+  opacity: 0;
+}
+
+input[type="checkbox"]:checked + label:after {
+  opacity: 1;
+}

@@ -1,0 +1,20 @@
+.registration__submitBtn {
+  padding: 12px 19px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  text-transform: uppercase;
+  color: #4E4E4E;
+  background-color: transparent;
+  border: 1px solid #4E4E4E;
+
+  &:hover {
+    background-color: black;
+    color: white;
+  }
+
+  &.picked {
+    background-color: black;
+    color: white;
+  }
+}
