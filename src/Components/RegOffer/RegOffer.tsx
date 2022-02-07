@@ -1,31 +1,43 @@
 import "./RegOffer.scss";
 
-import React from "react";
+import React, {useEffect, useRef} from "react";
 
 type RegOfferProps = {
-  id: string
   pickedBtn: string
-  isChecked: boolean
-  setOfferIsAccepted: React.Dispatch<React.SetStateAction<boolean>>
+  offer: boolean
+  handleChange: {(e: React.ChangeEvent<any>): void, <T_1=string | React.ChangeEvent<any>>(field: T_1): T_1 extends React.ChangeEvent<any> ? void : ((e: (string | React.ChangeEvent<any>)) => void)}
 };
 
-const RegOffer: React.FC<RegOfferProps> = ({pickedBtn, id, isChecked, setOfferIsAccepted}) => {
+const RegOffer: React.FC<RegOfferProps> = ({offer, handleChange, pickedBtn}) => {
 
-  const classes = () => {
-    if(pickedBtn === id) {
-      return "registration__check picked";
-    } else {
-      return "registration__check";
-    }
+  const id = 'offer';
+
+  const label = useRef<HTMLLabelElement>(null);
+  const input = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    pickedBtn === id ? label.current!.focus() : label.current!.blur()
+  }, [pickedBtn])
+
+  const clickSimulation = (e: React.KeyboardEvent<HTMLLabelElement>) => {
+    if(e.key === 'Enter' || e.key === ' ') input.current!.click();
   }
 
   return (
-    <div className={classes()}>
-      <input id="chBx1" type="checkbox" className="check__checkbox" checked={isChecked} onChange={() => setOfferIsAccepted(prev => !prev)}/>
-      <label htmlFor="chBx1" className="check__title">
+    <>
+      <input
+        ref={input}
+        id="offer"
+        name="offer"
+        type="checkbox"
+        className="check__checkbox"
+        checked={offer}
+        onChange={handleChange}
+      />
+      <label htmlFor="offer" className="check__title" tabIndex={0} ref={label} onKeyDown={clickSimulation}>
         Согласие на обработку персональных данных
       </label>
-    </div>
+    </>
   );
 };
 

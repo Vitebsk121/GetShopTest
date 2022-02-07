@@ -7,13 +7,14 @@
   color: #4E4E4E;
   background-color: transparent;
   border: 1px solid #4E4E4E;
+  outline: none;
 
   &:hover {
     background-color: black;
     color: white;
   }
 
-  &.picked {
+  &:focus {
     background-color: black;
     color: white;
   }

@@ -1,29 +1,29 @@
 import "./KeyboardBtn.scss";
 
-import React from "react";
+import React, {useEffect, useRef} from "react";
 
 type KeyboardBtnProps = {
   id: string
   cls?: string[]
-  handlePhoneNum: (id: string) => void
+  programInputHandler: (key: string) => void
   pickedBtn: string
 };
 
-const KeyboardBtn: React.FC<KeyboardBtnProps> = ({ cls=[], id, handlePhoneNum, pickedBtn }) => {
+const KeyboardBtn: React.FC<KeyboardBtnProps> = ({ cls=[], id, programInputHandler, pickedBtn}) => {
 
-  const classes = () => {
-    if(id === pickedBtn) {
-      return `keyboard__item ${cls.join(' ')} picked`
-    } else {
-      return `keyboard__item ${cls.join(' ')}`
-    }
-  }
+  const button = useRef<HTMLButtonElement>(null)
+
+  useEffect(() => {
+    pickedBtn === id ? button.current!.focus() : button.current!.blur()
+  }, [pickedBtn])
 
   return (
     <button
+      ref={button}
+      type="button"
       tabIndex={-1}
-      className={classes()}
-      onClick={() => handlePhoneNum(id)}
+      className={`keyboard__item ${cls.join(' ')}`}
+      onClick={() => programInputHandler(id)}
     >
       {id}
     </button>

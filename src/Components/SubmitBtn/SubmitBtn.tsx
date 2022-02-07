@@ -1,29 +1,29 @@
 import "./SubmitBtn.scss";
 
-import React from "react";
+import React, {useEffect, useRef} from "react";
 
 type SubmitBtnProps = {
-  id: string
   pickedBtn: string
-  checkVrKey: (key: string) => void
 };
 
-const SubmitBtn: React.FC<SubmitBtnProps> = ({id, pickedBtn, checkVrKey}) => {
-  const classes = () => {
-    if(pickedBtn === id) {
-      return "registration__submitBtn picked";
-    } else {
-      return "registration__submitBtn";
-    }
-  }
+const SubmitBtn: React.FC<SubmitBtnProps> = ({pickedBtn}) => {
+
+  const id = 'submit';
+
+  const button = useRef<HTMLButtonElement>(null)
+
+  useEffect(() => {
+    pickedBtn === id ? button.current!.focus() : button.current!.blur()
+  }, [pickedBtn])
+
+
   return (
     <button
-      tabIndex={-1}
-      onKeyPress={() => {return}}
-      onClick={() => checkVrKey('submit')}
-      className={classes()}
+      ref={button}
+      className='registration__submitBtn'
+      type="submit"
     >
-      Подтвердить
+      Подтвердить номер
     </button>
   );
 };

@@ -8,7 +8,7 @@ type PhoneNumberProps = {
 
 const PhoneNumber: React.FC<PhoneNumberProps> = ({phoneNum}) => {
   return (
-    <div className="registration__telephone">
+    <div className="registration__phone">
       +7(
       <span className="phoneNum__item">{phoneNum[0] !== undefined ? phoneNum[0] : '_'}</span>
       <span className="phoneNum__item">{phoneNum[1] !== undefined ? phoneNum[1] : '_'}</span>

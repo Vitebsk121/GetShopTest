@@ -21,13 +21,14 @@
   color: #000000;
   background-color: transparent;
   border: 2px solid black;
+  outline: none;
 
   &:hover {
     background-color: black;
     color: white;
   }
 
-  &.picked {
+  &:focus {
     background-color: black;
     color: white;
   }

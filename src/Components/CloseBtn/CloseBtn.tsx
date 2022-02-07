@@ -1,27 +1,27 @@
 import "./CloseBtn.scss";
 
-import React from "react";
+import React, {useEffect, useRef} from "react";
 
 type CloseBtnProps = {
-  id: string
   pickedBtn: string
-  checkVrKey: (key: string) => void
+  id: string
+  playVideo: () => void
 };
 
-const CloseBtn: React.FC<CloseBtnProps> = ({id, pickedBtn, checkVrKey}) => {
+const CloseBtn: React.FC<CloseBtnProps> = ({playVideo, id, pickedBtn}) => {
 
-  const classes = () => {
-    if(pickedBtn === id) {
-      return "promoReg__closeBtn picked";
-    } else {
-      return "promoReg__closeBtn";
-    }
-  }
+  const button = useRef<HTMLButtonElement>(null)
+
+  useEffect(() => {
+    pickedBtn === id ? button.current!.focus() : button.current!.blur()
+  }, [pickedBtn])
+
   return (
     <button
+      ref={button}
       tabIndex={-1}
-      className={classes()}
-      onClick={() => checkVrKey('close')}
+      className='promoReg__closeBtn'
+      onClick={playVideo}
     >
       <div className="closeBtn__line first__line" />
       <div className="closeBtn__line second__line" />

@@ -45,7 +45,7 @@ const App: React.FC = () => {
           : <Banner cls={cls} stopVideo={stopVideo} />
         }
         { promoIsVisible
-          ? <PromoReg playVideo={playVideo} />
+          ? <PromoReg stopVideo={stopVideo} playVideo={playVideo}  />
           : null
         }
       </div>
