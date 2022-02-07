@@ -3,6 +3,7 @@ import "./PromoReg.scss";
 import React, {useEffect, useState} from "react";
 import Registration from "../Registration/Registration";
 import CloseBtn from "../CloseBtn/CloseBtn";
+import FinalInfo from "../FinalInfo/FinalInfo";
 
 type PromoRegProps = {
   playVideo: () => void
@@ -13,6 +14,8 @@ const PromoReg: React.FC<PromoRegProps> = ({playVideo}) => {
   const coordinatesLink = [0,0];
 
   const [pickedBtn, setPickedBtn] = useState('');
+
+  const [regIsFinished, setRegIsFinished] = useState(false);
 
   const navigationVR = [
     ['1', '2', '3', 'close'],
@@ -68,7 +71,12 @@ const PromoReg: React.FC<PromoRegProps> = ({playVideo}) => {
 
   return (
     <div className='promoReg'>
-      <Registration pickedBtn={pickedBtn} />
+      <div className='promoReg__content'>
+        {regIsFinished
+          ? <FinalInfo />
+          : <Registration pickedBtn={pickedBtn} setRegIsFinished={setRegIsFinished} />
+        }
+      </div>
       <div className="promoReg__controls">
         <CloseBtn id={'close'} playVideo={playVideo} pickedBtn={pickedBtn}/>
         <div className="promoReg__info">

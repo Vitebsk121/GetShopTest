@@ -9,12 +9,6 @@
   background-color: rgba(0,0,0,0.1);
 }
 
-.registration {
-  width: 380px;
-  height: 100%;
-  background-color: rgba(134, 211, 244, 1);
-}
-
 .promoReg__controls {
   display: flex;
   flex-direction: column;
@@ -43,40 +37,9 @@
   color: #FFFFFF;
 }
 
-.registration {
+.promoReg__content {
+  width: 380px;
+  height: 100%;
+  background-color: rgba(134, 211, 244, 1);
   padding: 72px 48px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
 }
-
-.registration__title {
-  font-style: normal;
-  font-weight: normal;
-  font-size: 26px;
-  line-height: 30px;
-  display: flex;
-  align-items: center;
-  text-align: center;
-}
-
-.registration__telephone {
-  font-style: normal;
-  font-weight: bold;
-  font-size: 32px;
-  line-height: 37px;
-  display: flex;
-  align-items: center;
-  text-transform: uppercase;
-}
-
-.registration__subtitle {
-  font-style: normal;
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 16px;
-  display: flex;
-  align-items: center;
-  text-align: center;
-}
-
