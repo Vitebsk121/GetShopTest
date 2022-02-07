@@ -68,7 +68,7 @@ module.exports = {
       new HTMLWebpackPlugin({
         title: 'V8-crm',
         template: './src/index.html',
-//TODO         favicon: "./src/favicon.png", добавить иконку
+        favicon: "./src/favicon.png",
         minify: {
           collapseWhitespace: isProd
         },
