@@ -18,7 +18,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({player, isStopped, playVideo})
         src="../../assets/videos/promo.mp4"
         loop
       />
-      {isStopped ? <button onClick={playVideo} className="video__playBtn" /> : null}
+      {isStopped ? <button tabIndex={-1} onClick={playVideo} className="video__playBtn" /> : null}
     </>
   );
 };
