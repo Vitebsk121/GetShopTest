@@ -9,9 +9,23 @@ import SubmitBtn from "../SubmitBtn/SubmitBtn";
 
 type RegistrationProps = {
   pickedBtn: string
+  setRegIsFinished: React.Dispatch<React.SetStateAction<boolean>>
 };
 
-const Registration: React.FC<RegistrationProps> = ({ pickedBtn }) => {
+const Registration: React.FC<RegistrationProps> = ({ pickedBtn , setRegIsFinished}) => {
+
+  const validateNumberAPI = async (phoneNumber: string) => {
+    try{
+      const response = await fetch(`http://apilayer.net/api/validate?access_key=4b6167eabeb7635bf56fe74f9d7927e0&number=${phoneNumber}&country_code=RU&format=1`)
+      return response.json();
+    } catch (e) {
+      alert(e)
+    }
+  }
+
+  const finishedRegistration = () => {
+    setRegIsFinished(true);
+  }
 
   const formik = useFormik({
     initialValues: {
@@ -19,8 +33,10 @@ const Registration: React.FC<RegistrationProps> = ({ pickedBtn }) => {
       offer: false,
     },
     onSubmit: values => {
-      if(!formik.values.offer || formik.values.phone.length < 10) return;
-      alert(JSON.stringify(values, null, 2));
+      if(!values.offer || values.phone.length < 10) return;
+      validateNumberAPI(values.phone).then((data) => {
+        data.valid ? finishedRegistration() : alert('Номер недействителен, попробуйте другой номер телефона');
+      });
     },
   });
 
