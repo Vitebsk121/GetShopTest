@@ -61,8 +61,8 @@ module.exports = {
       extensions: [".ts", ".tsx", ".js"]
     },
     performance: {
-      maxEntrypointSize: 5120000,
-      maxAssetSize: 5120000
+      maxEntrypointSize: 51200000,
+      maxAssetSize: 51200000
     },
     plugins: [
       new HTMLWebpackPlugin({
@@ -92,7 +92,7 @@ module.exports = {
     module: {
       rules: [
         {
-          test: /\.(?:ico|gif|png|jpg|jpeg|svg)$/i,
+          test: /\.(?:ico|gif|png|jpg|jpeg|svg|mp4)$/i,
           type: 'asset/resource'
         },
         {

@@ -1,4 +1,5 @@
 import "./Banner.scss";
+import qrCodePic from "../../assets/images/qrCode_pic.png"
 
 import React from "react";
 
@@ -16,7 +17,7 @@ const Banner: React.FC<BannerProps> = ({cls, stopVideo}: BannerProps) => {
         ИСПОЛНИТЕ МЕЧТУ ВАШЕГО БОССА!
         ПОДАРИТЕ ЕМУ VOLVO!
       </p>
-      <img src="../../assets/images/qrCode_pic.png" alt="QR-code" className="banner__qrCode"/>
+      <img src={qrCodePic} alt="QR-code" className="banner__qrCode"/>
       <p className="banner__subtitle">
         Сканируйте QR-код
         или нажмите ОК

@@ -1,4 +1,5 @@
 import "./VideoPlayer.scss";
+import promoVideo from "../../assets/videos/promo.mp4"
 
 import React from "react";
 
@@ -15,7 +16,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({player, isStopped, playVideo})
       <video
         ref={player}
         className="promo__video"
-        src="../../assets/videos/promo.mp4"
+        src={promoVideo}
         loop
       />
       {isStopped ? <button tabIndex={-1} onClick={playVideo} className="video__playBtn" /> : null}

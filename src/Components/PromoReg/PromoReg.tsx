@@ -1,4 +1,6 @@
 import "./PromoReg.scss";
+import qrCodePic from "../../assets/images/qrCode_pic.png"
+
 
 import React, {useEffect, useState} from "react";
 import Registration from "../Registration/Registration";
@@ -83,7 +85,7 @@ const PromoReg: React.FC<PromoRegProps> = ({playVideo}) => {
           <p className="promoReg__info__title">
             Сканируйте QR-код ДЛЯ ПОЛУЧЕНИЯ ДОПОЛНИТЕЛЬНОЙ ИНФОРМАЦИИ
           </p>
-          <img src="../../assets/images/qrCode_pic.png" alt="QR-code" className="promoReg__info__pic"/>
+          <img src={qrCodePic} alt="QR-code" className="promoReg__info__pic"/>
         </div>
       </div>
     </div>
