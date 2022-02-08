@@ -1,6 +1,6 @@
 import "./Registration.scss";
 
-import React from "react";
+import React, {useEffect, useState} from "react";
 import KeyBoardVR from "../KeyBoardVR/KeyBoardVR";
 import {useFormik} from "formik";
 import PhoneNumber from "../PhoneNumber/PhoneNumber";
@@ -13,6 +13,10 @@ type RegistrationProps = {
 };
 
 const Registration: React.FC<RegistrationProps> = ({ pickedBtn , setRegIsFinished}) => {
+
+  const [phoneNumberIsValid, setPhoneNumberIsValid] = useState(true);
+
+  const [formIsValid, setFormIsValid] = useState(false);
 
   const validateNumberAPI = async (phoneNumber: string) => {
     try{
@@ -27,6 +31,14 @@ const Registration: React.FC<RegistrationProps> = ({ pickedBtn , setRegIsFinishe
     setRegIsFinished(true);
   }
 
+  const invalidNumber = () => {
+    alert('Номер недействителен, попробуйте другой номер телефона');
+    setPhoneNumberIsValid(false);
+    setTimeout(() => {
+      setPhoneNumberIsValid(true);
+    }, 5000)
+  }
+
   const formik = useFormik({
     initialValues: {
       phone: '',
@@ -35,10 +47,15 @@ const Registration: React.FC<RegistrationProps> = ({ pickedBtn , setRegIsFinishe
     onSubmit: values => {
       if(!values.offer || values.phone.length < 10) return;
       validateNumberAPI(values.phone).then((data) => {
-        data.valid ? finishedRegistration() : alert('Номер недействителен, попробуйте другой номер телефона');
+        data.valid ? finishedRegistration() : invalidNumber();
       });
     },
   });
+
+  useEffect(() => {
+    setFormIsValid(formik.values.offer && formik.values.phone.length === 10);
+  }, [formik.values.phone, formik.values.offer])
+
 
   const checkNumber = (event: React.ChangeEvent<HTMLInputElement>) => {
     const arrayOfNumbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', null, undefined];
@@ -77,13 +94,13 @@ const Registration: React.FC<RegistrationProps> = ({ pickedBtn , setRegIsFinishe
         onChange={inputHandler}
         value={formik.values.phone}
       />
-      <PhoneNumber phoneNum={formik.values.phone.split('')} />
+      <PhoneNumber phoneNum={formik.values.phone.split('')} phoneNumberIsValid={phoneNumberIsValid}/>
       <label className="registration__subtitle" htmlFor="phone">
         и с Вами свяжется наш менеджер для дальнейшей консультации
       </label>
       <KeyBoardVR programInputHandler={programInputHandler} pickedBtn={pickedBtn} />
       <RegOffer offer={formik.values.offer} handleChange={formik.handleChange} pickedBtn={pickedBtn} />
-      <SubmitBtn pickedBtn={pickedBtn} />
+      <SubmitBtn pickedBtn={pickedBtn} formIsValid={formIsValid} />
     </form>
   );
 };

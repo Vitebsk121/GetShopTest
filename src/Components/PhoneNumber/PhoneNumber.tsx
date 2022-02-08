@@ -4,11 +4,15 @@ import React from "react";
 
 type PhoneNumberProps = {
   phoneNum: string[]
+  phoneNumberIsValid: boolean
 };
 
-const PhoneNumber: React.FC<PhoneNumberProps> = ({phoneNum}) => {
+const PhoneNumber: React.FC<PhoneNumberProps> = ({phoneNum, phoneNumberIsValid}: PhoneNumberProps) => {
+  const cls = () => {
+    return phoneNumberIsValid ? "registration__phone" : "registration__phone invalid";
+  }
   return (
-    <div className="registration__phone">
+    <div className={cls()}>
       +7(
       <span className="phoneNum__item">{phoneNum[0] !== undefined ? phoneNum[0] : '_'}</span>
       <span className="phoneNum__item">{phoneNum[1] !== undefined ? phoneNum[1] : '_'}</span>

@@ -4,13 +4,22 @@ import React, {useEffect, useRef} from "react";
 
 type SubmitBtnProps = {
   pickedBtn: string
+  formIsValid: boolean
 };
 
-const SubmitBtn: React.FC<SubmitBtnProps> = ({pickedBtn}) => {
+const SubmitBtn: React.FC<SubmitBtnProps> = ({pickedBtn, formIsValid}: SubmitBtnProps) => {
 
   const id = 'submit';
 
-  const button = useRef<HTMLButtonElement>(null)
+  const button = useRef<HTMLButtonElement>(null);
+
+  const clearFocus = () => {
+    button.current!.blur();
+  }
+
+  const cls = () => {
+    return formIsValid ? "registration__submitBtn" : "registration__submitBtn invalid";
+  }
 
   useEffect(() => {
     pickedBtn === id ? button.current!.focus() : button.current!.blur()
@@ -20,7 +29,8 @@ const SubmitBtn: React.FC<SubmitBtnProps> = ({pickedBtn}) => {
   return (
     <button
       ref={button}
-      className='registration__submitBtn'
+      onMouseLeave={clearFocus}
+      className={cls()}
       type="submit"
     >
       Подтвердить номер

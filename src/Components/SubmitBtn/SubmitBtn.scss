@@ -8,6 +8,7 @@
   background-color: transparent;
   border: 1px solid #4E4E4E;
   outline: none;
+  cursor: pointer;
 
   &:hover {
     background-color: black;
@@ -17,5 +18,20 @@
   &:focus {
     background-color: black;
     color: white;
+  }
+
+  &.invalid {
+    background-color: rgba(0,0,0,0.2);
+    cursor: initial;
+
+    &:hover {
+      background-color: rgba(0,0,0,0.2);
+      color: #4E4E4E;
+    }
+
+    &:focus {
+      background-color: rgba(0,0,0,0.2);
+      color: #4E4E4E;
+    }
   }
 }
