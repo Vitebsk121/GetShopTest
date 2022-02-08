@@ -9,7 +9,7 @@ const App: React.FC = () => {
 
   const [cls, setCls] = useState(["promo__banner"]);
   const [isStopped, setIsStopped] = useState(true);
-  const [promoIsVisible, setPromoIsVisible] = useState(true);
+  const [promoIsVisible, setPromoIsVisible] = useState(false);
   const player = useRef<HTMLVideoElement>(null);
 
   const showBanner = () => {
