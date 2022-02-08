@@ -11,7 +11,11 @@ type KeyboardBtnProps = {
 
 const KeyboardBtn: React.FC<KeyboardBtnProps> = ({ cls=[], id, programInputHandler, pickedBtn}) => {
 
-  const button = useRef<HTMLButtonElement>(null)
+  const button = useRef<HTMLButtonElement>(null);
+
+  const clearFocus = () => {
+    button.current!.blur();
+  }
 
   useEffect(() => {
     pickedBtn === id ? button.current!.focus() : button.current!.blur()
@@ -22,6 +26,7 @@ const KeyboardBtn: React.FC<KeyboardBtnProps> = ({ cls=[], id, programInputHandl
       ref={button}
       type="button"
       tabIndex={-1}
+      onMouseLeave={clearFocus}
       className={`keyboard__item ${cls.join(' ')}`}
       onClick={() => programInputHandler(id)}
     >
